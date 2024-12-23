@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import DashboardWrapper from "@/components/DashboardWrapper";
 import { Geist } from "next/font/google";
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
@@ -23,14 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={cn(geistSans.className, "antialiased")}>
+      <body className={cn(geistSans.className, "antialiased overflow-hidden")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <DashboardWrapper>{children}</DashboardWrapper>
         </ThemeProvider>
       </body>
     </html>
