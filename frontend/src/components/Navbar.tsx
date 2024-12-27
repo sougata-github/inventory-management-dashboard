@@ -7,11 +7,21 @@ import { Input } from "./ui/input";
 import { ModeToggle } from "./theme/ModeToggle";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 // import Image from "next/image";
 
-const Navbar = () => {
+interface Props {
+  isCollapsed: boolean;
+}
+
+const Navbar = ({ isCollapsed }: Props) => {
   return (
-    <nav className="flex justify-between items-center w-full mb-7">
+    <nav
+      className={cn(
+        "flex justify-between items-center w-full border-b py-4 md:py-5 px-8",
+        isCollapsed && "md:pl-24"
+      )}
+    >
       {/* left side */}
       <div className="flex justify-between items-center gap-5">
         <Button

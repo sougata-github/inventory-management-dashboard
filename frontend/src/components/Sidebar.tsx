@@ -3,10 +3,14 @@
 import { Box, Menu } from "lucide-react";
 import { Button } from "./ui/button";
 
-const Sidebar = () => {
+interface Props {
+  isCollapsed: boolean;
+}
+
+const Sidebar = ({ isCollapsed }: Props) => {
   return (
     <aside className="border-l border px-4">
-      <div className="flex gap-3 justify-between md:justify-normal items-center pt-7">
+      <div className="flex gap-3 justify-between md:justify-normal items-center pt-4 md:pt-5">
         <div>
           <Box className="size-5" />
         </div>
