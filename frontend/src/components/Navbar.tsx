@@ -1,25 +1,31 @@
 "use client";
 
-import { Menu, Search, Settings, User } from "lucide-react";
-
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { ModeToggle } from "./theme/ModeToggle";
-import { Separator } from "./ui/separator";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
+
+import { setIsSidebarCollapsed } from "@/app/(state)";
+import { useAppDispatch, useAppSelector } from "@/app/(state)/redux";
+
+import { ChevronRight, Search, User } from "lucide-react";
+
 // import Image from "next/image";
 
-interface Props {
-  isCollapsed: boolean;
-}
+const Navbar = () => {
+  const dispatch = useAppDispatch();
+  const isSidebarCollapsed = useAppSelector(
+    (state) => state.global.isSidebarCollapsed
+  );
 
-const Navbar = ({ isCollapsed }: Props) => {
+  const toggleSidebar = () => {
+    dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
+  };
+
   return (
     <nav
       className={cn(
-        "flex justify-between items-center w-full border-b py-4 md:py-5 px-8",
-        isCollapsed && "md:pl-24"
+        "flex justify-between items-center w-full border-b py-5 px-4 md:px-8 max-md:gap-4"
       )}
     >
       {/* left side */}
@@ -27,10 +33,10 @@ const Navbar = ({ isCollapsed }: Props) => {
         <Button
           size="icon"
           variant="outline"
-          className="p-3 rounded-full bg-transparent"
-          onClick={() => {}}
+          className="flex md:hidden p-3 rounded-lg bg-transparent"
+          onClick={toggleSidebar}
         >
-          <Menu className="size-4" />
+          <ChevronRight />
         </Button>
 
         <div className="relative">
@@ -46,21 +52,16 @@ const Navbar = ({ isCollapsed }: Props) => {
       </div>
 
       {/* right side */}
-      <div className="flex justify-between items-center gap-5">
-        <div className="hidden md:flex justify-between items-center gap-5">
-          <ModeToggle />
 
-          <Separator className="w-[0.5px] h-7" />
-
-          <div className="flex items-center gap-3 cursor-pointer">
-            <User className="size-4" />
-            <span className="font-semibold">Sougata.</span>
-          </div>
-        </div>
-
-        <Link href="/settings">
-          <Settings className="size-4 cursor-pointer" />
-        </Link>
+      <div className="flex md:justify-between items-center gap-2">
+        <ModeToggle />
+        <Button
+          size="icon"
+          variant="outline"
+          className="p-3 rounded-lg bg-transparent hidden md:flex"
+        >
+          <User />
+        </Button>
       </div>
     </nav>
   );
