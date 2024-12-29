@@ -1,10 +1,53 @@
 "use client";
 
-import { Box, ChevronRight, Settings } from "lucide-react";
+import { ChevronRight, LucideIcon, Settings } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/app/(state)/redux";
 import { setIsSidebarCollapsed } from "@/app/(state)";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { sidebarLinks } from "@/constants";
+
+interface SidebarLinkProps {
+  href: string;
+  icon: LucideIcon;
+  label: string;
+  isCollapsed: boolean;
+}
+
+const SidebarLinks = ({
+  href,
+  icon: Icon,
+  label,
+  isCollapsed,
+}: SidebarLinkProps) => {
+  const pathname = usePathname();
+  const isActive =
+    pathname === href || (pathname === "/" && href === "/dashboard");
+
+  return (
+    <Link
+      href={href}
+      className={cn(
+        "flex items-center p-2 rounded-md",
+        isActive &&
+          !isCollapsed &&
+          "bg-muted-foreground/10 transition-colors duration-300",
+        isCollapsed && "justify-center"
+      )}
+    >
+      <button
+        className={cn(
+          "flex items-center rounded-sm p-1 gap-4",
+          isActive && isCollapsed && "bg-muted-foreground/10"
+        )}
+      >
+        <Icon className="size-4" />
+        <span className={cn("text-sm", isCollapsed && "hidden")}>{label}</span>
+      </button>
+    </Link>
+  );
+};
 
 const Sidebar = () => {
   const dispatch = useAppDispatch();
@@ -19,7 +62,7 @@ const Sidebar = () => {
   return (
     <aside
       className={cn(
-        "bg-background fixed md:sticky flex flex-col border-l border transition-all duration-300 overflow-hidden h-full md:min-h-screen shadow z-40 py-5",
+        "bg-background fixed md:sticky flex flex-col border-l border transition-all duration-300 overflow-hidden h-full md:min-h-screen shadow max-md:z-40 py-5",
         isSidebarCollapsed ? "w-0 md:w-16" : "w-72 md:w-64",
         isSidebarCollapsed ? "px-0 md:px-4" : "px-4"
       )}
@@ -51,26 +94,33 @@ const Sidebar = () => {
         </button>
       </div>
 
-      <div className="flex items-center px-0.5 py-4">
-        <Link
-          href="/"
-          className={cn(isSidebarCollapsed ? "hidden md:block" : "hidden")}
-        >
-          <Box className="size-5" />
-        </Link>
+      {/* links */}
+      <div className="flex-grow mt-16">
+        <ul className="flex flex-col gap-4">
+          {sidebarLinks.map((link) => (
+            <SidebarLinks
+              key={link.label}
+              {...link}
+              isCollapsed={isSidebarCollapsed}
+            />
+          ))}
+        </ul>
       </div>
 
-      {/* links */}
-      <div className="flex-grow mt-8"></div>
-
       {/* footer */}
-      <Link href="/settings" className="flex items-center gap-4">
-        <button className="flex items-center rounded-sm p-1 border">
+      <Link
+        href="/settings"
+        className={cn(
+          "flex items-center p-2 rounded-md",
+          isSidebarCollapsed && "justify-center"
+        )}
+      >
+        <button className="flex items-center rounded-sm p-1 gap-4">
           <Settings className="size-4" />
+          <span className={cn("text-sm", isSidebarCollapsed && "hidden")}>
+            Settings
+          </span>
         </button>
-        <p className={cn("text-sm", isSidebarCollapsed && "hidden")}>
-          Settings
-        </p>
       </Link>
     </aside>
   );
