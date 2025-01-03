@@ -10,7 +10,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <Sidebar />
       <main className="w-full h-full">
         <Navbar />
-        <div className="px-8 py-4">{children}</div>
+        <div className="px-8 py-4 overflow-y-auto overflow-x-hidden">
+          {children}
+        </div>
       </main>
     </div>
   );

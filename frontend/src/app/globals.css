@@ -71,3 +71,33 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@media (min-width: 768px) {
+  .custom-grid-rows {
+    grid-template-rows: repeat(6, 20vh);
+  }
+}
+
+@media (min-width: 1280px) {
+  .custom-grid-rows {
+    grid-template-rows: repeat(8, 7.5vh);
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #979797;
+    border-radius: 50px;
+  }
+}

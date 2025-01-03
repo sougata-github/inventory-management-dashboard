@@ -15,19 +15,19 @@ const prisma = new client_1.PrismaClient();
 const getDashboardMetrics = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const popularProducts = yield prisma.products.findMany({
-            take: 15,
+            take: 5,
             orderBy: {
                 stockQuantity: "desc",
             },
         });
         const salesSummary = yield prisma.salesSummary.findMany({
-            take: 5,
+            take: 10,
             orderBy: {
                 date: "desc",
             },
         });
         const purchaseSummary = yield prisma.purchaseSummary.findMany({
-            take: 5,
+            take: 10,
             orderBy: {
                 date: "desc",
             },
