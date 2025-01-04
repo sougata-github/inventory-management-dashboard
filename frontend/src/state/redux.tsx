@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   persistStore,
@@ -20,8 +21,8 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { PersistGate } from "redux-persist/integration/react";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { Loader as LuiceLoader } from "lucide-react";
-import globalReducer from "@/app/(state)";
-import { api } from "@/app/(state)/api";
+import globalReducer from "@/state";
+import { api } from "@/state/api";
 import { useRef } from "react";
 
 /* REDUX PERSISTENCE */
@@ -82,7 +83,7 @@ export default function StoreProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const storeRef = useRef<AppStore>();
+  const storeRef = useRef<AppStore>(null);
   if (!storeRef.current) {
     storeRef.current = makeStore();
     setupListeners(storeRef.current.dispatch);

@@ -1,5 +1,5 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
-import { useGetDashboardMetricsQuery } from "@/app/(state)/api";
+import { useGetDashboardMetricsQuery } from "@/state/api";
 import { PieColorsDark, PieColorsLight } from "@/constants";
 import { ExpenseByCategorySummary } from "@/types";
 import { useMediaQuery } from "usehooks-ts";

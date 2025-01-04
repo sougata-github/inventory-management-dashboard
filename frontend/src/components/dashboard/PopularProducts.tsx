@@ -1,4 +1,4 @@
-import { useGetDashboardMetricsQuery } from "@/app/(state)/api";
+import { useGetDashboardMetricsQuery } from "@/state/api";
 import { ShoppingBag, Star } from "lucide-react";
 
 import Loader from "./Loader";

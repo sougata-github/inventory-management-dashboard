@@ -4,8 +4,8 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { ModeToggle } from "./theme/ModeToggle";
 import { cn } from "@/lib/utils";
-import { setIsSidebarCollapsed } from "@/app/(state)";
-import { useAppDispatch, useAppSelector } from "@/app/(state)/redux";
+import { setIsSidebarCollapsed } from "@/state";
+import { useAppDispatch, useAppSelector } from "@/state/redux";
 import { ChevronRight, Search, User } from "lucide-react";
 
 // import Image from "next/image";

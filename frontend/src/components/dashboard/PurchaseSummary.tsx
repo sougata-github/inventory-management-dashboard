@@ -1,5 +1,5 @@
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
-import { useGetDashboardMetricsQuery } from "@/app/(state)/api";
+import { useGetDashboardMetricsQuery } from "@/state/api";
 import { TrendingDown, TrendingUp } from "lucide-react";
 import numeral from "numeral";
 

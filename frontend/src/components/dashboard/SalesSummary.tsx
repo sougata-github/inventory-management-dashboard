@@ -7,7 +7,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useGetDashboardMetricsQuery } from "@/app/(state)/api";
+import { useGetDashboardMetricsQuery } from "@/state/api";
 import { useMediaQuery } from "usehooks-ts";
 import { TrendingUp } from "lucide-react";
 
