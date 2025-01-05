@@ -1,7 +1,7 @@
+import { Skeleton } from "../ui/skeleton";
+
 const Loader = () => {
-  return (
-    <div className="h-[200px] w-full bg-muted-foreground/10 animate-pulse rounded-lg" />
-  );
+  return <Skeleton className="h-[200px] w-full animate-pulse rounded-lg" />;
 };
 
 export default Loader;

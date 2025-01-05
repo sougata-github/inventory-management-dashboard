@@ -9,7 +9,7 @@ import ExpenseSummary from "@/components/dashboard/ExpenseSummary";
 
 export default function Dashboard() {
   return (
-    <section className="py-4 flex flex-col gap-4">
+    <section className="flex flex-col gap-4">
       {/* stats */}
       <StatCards />
 

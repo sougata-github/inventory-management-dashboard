@@ -1,6 +1,7 @@
+import { Column } from "@/components/inventory/DataGrid";
+import { Product } from "@/types";
 import { DollarSign, Home, Layout, ShoppingBag, User } from "lucide-react";
 import { Users, ShoppingCart, TrendingUp } from "lucide-react";
-
 
 export const sidebarLinks = [
   {
@@ -60,3 +61,28 @@ export const statCardsData = [
 export const PieColorsLight = ["#71717a", "#52525b", "#3f3f46"];
 
 export const PieColorsDark = ["#a1a1aa", "#c4c4cc", "#e4e4e7"];
+
+export const columns: Column<Product>[] = [
+  { field: "productId", headerName: "ID", width: 200 },
+  { field: "name", headerName: "Product Name", width: 200 },
+  {
+    field: "price",
+    headerName: "Price",
+    width: 60,
+    type: "number",
+    valueGetter: (value, row) => `$${row.price.toFixed(2)}`,
+  },
+  {
+    field: "rating",
+    headerName: "Rating",
+    width: 100,
+    type: "number",
+    valueGetter: (value, row) => (row.rating ? row.rating : "N/A"),
+  },
+  {
+    field: "stockQuantity",
+    headerName: "Stock Quantity",
+    width: 150,
+    type: "number",
+  },
+];
