@@ -20,7 +20,7 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { PersistGate } from "redux-persist/integration/react";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { Loader as LuiceLoader } from "lucide-react";
+import { Loader as LucideLoader } from "lucide-react";
 import globalReducer from "@/state";
 import { api } from "@/state/api";
 import { useRef } from "react";
@@ -102,7 +102,7 @@ export default function StoreProvider({
 const Loader = () => {
   return (
     <div className="h-screen w-screen flex items-center justify-center">
-      <LuiceLoader className="size-5 animate-spin transition-all" />
+      <LucideLoader className="size-5 animate-spin transition-all" />
     </div>
   );
 };

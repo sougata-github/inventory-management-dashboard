@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronRight, LucideIcon, Settings } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "@/state/redux";
+import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsSidebarCollapsed } from "@/state";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
