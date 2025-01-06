@@ -8,10 +8,9 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function TaskListSkeleton() {
+const Loader = () => {
   return (
     <div className="container mx-auto py-10">
-      <Skeleton className="h-10 w-[250px] mb-6" />
       <div className="border rounded-lg">
         <Table>
           <TableHeader>
@@ -55,4 +54,6 @@ export default function TaskListSkeleton() {
       </div>
     </div>
   );
-}
+};
+
+export default Loader;

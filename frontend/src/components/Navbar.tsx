@@ -1,14 +1,44 @@
 "use client";
 
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
 import { ModeToggle } from "./theme/ModeToggle";
-import { cn } from "@/lib/utils";
 import { setIsSidebarCollapsed } from "@/state";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
-import { ChevronRight, Search, User } from "lucide-react";
+import { ChevronRight, ChevronsUpDown, LogOut, User } from "lucide-react";
+import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
-// import Image from "next/image";
+const UserMenu = () => {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">
+          <span className="font-medium">Admin</span>
+          <ChevronsUpDown className="h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56 ml-2" align="end">
+        <DropdownMenuItem asChild>
+          <Link href="/users" className="flex items-center">
+            <User className="mr-2 h-4 w-4" />
+            <span>Users</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <LogOut className="mr-2 h-4 w-4" />
+          <span>Sign out</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -21,11 +51,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={cn(
-        "flex justify-between items-center w-full border-b py-5 px-4 md:px-8 max-md:gap-4"
-      )}
-    >
+    <nav className="flex justify-between items-center w-full border-b py-5 px-4 md:px-8 max-md:gap-4">
       {/* left side */}
       <div className="flex justify-between items-center gap-5">
         <Button
@@ -37,16 +63,7 @@ const Navbar = () => {
           <ChevronRight />
         </Button>
 
-        <div className="relative">
-          <Input
-            type="text"
-            placeholder="Search for products"
-            className="w-52 md:w-80 pl-8 md:pl-10 pr-4 placeholder:text-sm text-sm"
-          />
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search className="size-4" />
-          </div>
-        </div>
+        <UserMenu />
       </div>
 
       {/* right side */}

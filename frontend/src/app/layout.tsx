@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import DashboardWrapper from "@/components/DashboardWrapper";
 import { Geist } from "next/font/google";
 import type { Metadata } from "next";
+import { Toaster } from "sonner";
 import { cn } from "@/lib/utils";
 
 const geistSans = Geist({
@@ -31,7 +32,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <DashboardWrapper>{children}</DashboardWrapper>
+          <DashboardWrapper>
+            {children}
+            <Toaster />
+          </DashboardWrapper>
         </ThemeProvider>
       </body>
     </html>
