@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { DashboardMetrics, NewProduct, Product } from "@/types";
+import { DashboardMetrics, NewProduct, Product, User } from "@/types";
 
 //making an api call from frontend to backend
 export const api = createApi({
@@ -8,7 +8,7 @@ export const api = createApi({
 
   /*tags in which the response gets saved, we can invalidate anytime we make a post request(refetch when property gets updated)*/
 
-  tagTypes: ["DashboardMetrics", "Products"],
+  tagTypes: ["DashboardMetrics", "Products", "Users"],
   endpoints: (build) => ({
     //void cause it's a get request
     getDashboardMetrics: build.query<DashboardMetrics, void>({
@@ -32,6 +32,12 @@ export const api = createApi({
       //updates the product list when a new product gets added.
       invalidatesTags: ["Products"],
     }),
+    getUsers: build.query<User[], string | void>({
+      query: () => ({
+        url: "/users",
+      }),
+      providesTags: ["Users"],
+    }),
   }),
 });
 
@@ -39,4 +45,5 @@ export const {
   useGetDashboardMetricsQuery,
   useGetProductsQuery,
   useCreateProductMutation,
+  useGetUsersQuery,
 } = api;

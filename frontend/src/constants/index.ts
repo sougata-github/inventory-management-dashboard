@@ -1,7 +1,13 @@
-import { Column } from "@/components/inventory/DataGrid";
-import { Product } from "@/types";
-import { DollarSign, Home, Layout, ShoppingBag, User } from "lucide-react";
+import {
+  DollarSign,
+  Home,
+  Layout,
+  ShoppingBag,
+  User as UserLogo,
+} from "lucide-react";
 import { Users, ShoppingCart, TrendingUp } from "lucide-react";
+import { Column } from "@/components/DataGrid";
+import { Product, User } from "@/types";
 
 export const sidebarLinks = [
   {
@@ -21,7 +27,7 @@ export const sidebarLinks = [
   },
   {
     label: "Users",
-    icon: User,
+    icon: UserLogo,
     href: "/users",
   },
   {
@@ -62,7 +68,7 @@ export const PieColorsLight = ["#71717a", "#52525b", "#3f3f46"];
 
 export const PieColorsDark = ["#a1a1aa", "#c4c4cc", "#e4e4e7"];
 
-export const columns: Column<Product>[] = [
+export const productsColumns: Column<Product>[] = [
   { field: "productId", headerName: "ID", width: 200 },
   { field: "name", headerName: "Product Name", width: 200 },
   {
@@ -84,5 +90,15 @@ export const columns: Column<Product>[] = [
     headerName: "Stock Quantity",
     width: 150,
     type: "number",
+  },
+];
+
+export const usersColumns: Column<User>[] = [
+  { field: "userId", headerName: "ID", width: 160 },
+  { field: "name", headerName: "Name", width: 200 },
+  {
+    field: "email",
+    headerName: "Email",
+    width: 200,
   },
 ];

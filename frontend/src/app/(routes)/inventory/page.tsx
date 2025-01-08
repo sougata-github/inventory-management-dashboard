@@ -1,9 +1,9 @@
 "use client";
 
 import Header from "@/components/Header";
-import { DataGrid } from "@/components/inventory/DataGrid";
+import { DataGrid } from "@/components/DataGrid";
 import Loader from "@/components/inventory/Loader";
-import { columns } from "@/constants";
+import { productsColumns } from "@/constants";
 import { useGetProductsQuery } from "@/state/api";
 
 export default function Inventory() {
@@ -20,7 +20,7 @@ export default function Inventory() {
   return (
     <section className="flex flex-col">
       <Header name="Inventory" />
-      <DataGrid columns={columns} data={products} />
+      <DataGrid columns={productsColumns} data={products} />
     </section>
   );
 }

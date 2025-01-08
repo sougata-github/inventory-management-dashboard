@@ -47,3 +47,9 @@ export interface DashboardMetrics {
   expenseSummary: ExpenseSummary[];
   expenseByCategorySummary: ExpenseByCategorySummary[];
 }
+
+export interface User {
+  userId: string;
+  name: string;
+  email: string;
+}

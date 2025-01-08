@@ -22,25 +22,13 @@ const Loader = () => {
                 <Skeleton className="h-4 w-[80px]" />
               </TableHead>
               <TableHead className="w-[100px]">
-                <Skeleton className="h-4 w-[100px]" />
-              </TableHead>
-              <TableHead className="w-[100px]">
-                <Skeleton className="h-4 w-[100px]" />
-              </TableHead>
-              <TableHead className="w-[100px]">
-                <Skeleton className="h-4 w-[80px] ml-auto" />
+                <Skeleton className="h-4 w-[80px]" />
               </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {[...Array(10)].map((_, index) => (
               <TableRow key={index} className="animate-pulse">
-                <TableCell>
-                  <Skeleton className="h-4 w-[80px]" />
-                </TableCell>
-                <TableCell>
-                  <Skeleton className="h-4 w-[80px]" />
-                </TableCell>
                 <TableCell>
                   <Skeleton className="h-4 w-[80px]" />
                 </TableCell>
