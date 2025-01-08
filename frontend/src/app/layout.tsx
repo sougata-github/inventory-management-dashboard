@@ -1,10 +1,8 @@
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
-import DashboardWrapper from "@/components/DashboardWrapper";
 import { Geist } from "next/font/google";
 import type { Metadata } from "next";
-import { Toaster } from "sonner";
 import { cn } from "@/lib/utils";
 
 const geistSans = Geist({
@@ -25,17 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={cn(geistSans.className, "antialiased")}>
+      <body
+        className={cn(geistSans.className, "antialiased overflow-x-hidden")}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <DashboardWrapper>
-            {children}
-            <Toaster />
-          </DashboardWrapper>
+          {children}
         </ThemeProvider>
       </body>
     </html>
