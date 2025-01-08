@@ -89,7 +89,7 @@ const PurschaseSummary = () => {
                 dataKey="totalPurchased"
                 stroke="hsl(var(--foreground))"
                 strokeOpacity={1}
-                fillOpacity={0.2}
+                fillOpacity={0.5}
               />
             </AreaChart>
           </ResponsiveContainer>
