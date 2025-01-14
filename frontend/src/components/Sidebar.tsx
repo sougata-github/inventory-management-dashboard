@@ -75,7 +75,7 @@ const Sidebar = () => {
             isSidebarCollapsed && "hidden"
           )}
         >
-          stock.inc
+          Inventory
         </Link>
 
         <button
