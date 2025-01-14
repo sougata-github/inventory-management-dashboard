@@ -28,7 +28,7 @@ const SalesSummary = () => {
     }, 0) || 0;
 
   if (isError) {
-    return <div className="m-5">Failed to fetch data</div>;
+    return <div className="m-5">Failed to fetch data!</div>;
   }
 
   return (

@@ -8,6 +8,8 @@ import {
 import { ShoppingBag, Star } from "lucide-react";
 import { Product } from "@/types";
 
+// import Image from "next/image";
+
 interface Props {
   productId?: string;
   name: string;
@@ -21,7 +23,17 @@ const ProductCard = ({ name, price, rating, stockQuantity }: Props) => {
     <Card className="text-center">
       <CardHeader className="flex flex-col items-center gap-2">
         <div>
-          {/* image */}
+          {/* <Image
+            src={`https://s3-inventroy-management.s3.ap-south-1.amazonaws.com/product${Math.floor(
+              Math.random() * 3 + 1
+            )}.png`}
+            alt="product image"
+            width={80}
+            height={80}
+            priority
+            quality={100}
+            className="rounded-lg size-20"
+          /> */}
           <ShoppingBag className="size-5" />
         </div>
 

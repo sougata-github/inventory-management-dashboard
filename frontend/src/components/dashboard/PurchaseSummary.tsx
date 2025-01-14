@@ -6,11 +6,15 @@ import numeral from "numeral";
 import Loader from "./Loader";
 
 const PurschaseSummary = () => {
-  const { data, isLoading } = useGetDashboardMetricsQuery();
+  const { data, isLoading, isError } = useGetDashboardMetricsQuery();
 
   const purchaseData = data?.purchaseSummary || [];
 
   const lastDataPoint = purchaseData[purchaseData.length - 1] || null;
+
+  if (isError) {
+    return <div className="m-5">Failed to fetch data!</div>;
+  }
 
   return (
     <div className="shadow rounded-xl border">

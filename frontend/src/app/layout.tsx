@@ -13,6 +13,7 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: "Inventory",
   description: "Inventory management app built using Next.js.",
+  icons: "./favicon.ico",
 };
 
 export default function RootLayout({

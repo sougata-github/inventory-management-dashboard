@@ -1,6 +1,6 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
-import { useGetDashboardMetricsQuery } from "@/state/api";
 import { PieColorsDark, PieColorsLight } from "@/constants";
+import { useGetDashboardMetricsQuery } from "@/state/api";
 import { ExpenseByCategorySummary } from "@/types";
 import { useMediaQuery } from "usehooks-ts";
 import { TrendingUp } from "lucide-react";
@@ -19,7 +19,7 @@ const ExpenseSummary = () => {
 
   const pieColors = theme === "light" ? PieColorsLight : PieColorsDark;
 
-  const { data, isLoading } = useGetDashboardMetricsQuery();
+  const { data, isLoading, isError } = useGetDashboardMetricsQuery();
 
   const expenseByCategorySummary = data?.expenseByCategorySummary || [];
 
@@ -46,6 +46,10 @@ const ExpenseSummary = () => {
     .toFixed(2);
 
   const expenseSummary = data?.expenseSummary[0];
+
+  if (isError) {
+    return <div className="m-5">Failed to fetch data!</div>;
+  }
 
   return (
     <div className="shadow rounded-xl border">

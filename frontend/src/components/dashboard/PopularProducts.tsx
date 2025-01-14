@@ -4,7 +4,15 @@ import { ShoppingBag, Star } from "lucide-react";
 import Loader from "./Loader";
 
 const PopularProducts = () => {
-  const { data: dashboardMetrics, isLoading } = useGetDashboardMetricsQuery();
+  const {
+    data: dashboardMetrics,
+    isLoading,
+    isError,
+  } = useGetDashboardMetricsQuery();
+
+  if (isError) {
+    return <div className="m-5">Failed to fetch data!</div>;
+  }
 
   return (
     <div className="shadow rounded-xl border">

@@ -14,7 +14,7 @@ export default function Page() {
   }
 
   if (isError || !users) {
-    return <div className="text-center py-4">Failed to fetch products!</div>;
+    return <div className="text-center py-4">Failed to fetch data!</div>;
   }
 
   return (

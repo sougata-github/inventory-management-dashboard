@@ -78,7 +78,7 @@ export default function Expenses() {
   }
 
   if (isError || !expensesData) {
-    return <div className="text-center py-4">Failed to fetch products!</div>;
+    return <div className="text-center py-4">Failed to fetch data!</div>;
   }
 
   console.log(aggregatedData);
