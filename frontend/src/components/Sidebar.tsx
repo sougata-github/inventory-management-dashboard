@@ -62,7 +62,7 @@ const Sidebar = () => {
   return (
     <aside
       className={cn(
-        "bg-background fixed md:sticky md:top-0 md:bottom-0 md:left-0 flex flex-col border-l border transition-all duration-300 h-full md:min-h-screen shadow max-md:z-40 py-5 overflow-hidden",
+        "bg-background fixed md:sticky md:top-0 md:bottom-0 md:left-0 flex flex-col border-l border transition-all duration-300 h-screen shadow max-md:z-40 py-5 overflow-hidden",
         isSidebarCollapsed ? "w-0 md:w-16" : "w-72 md:w-64",
         isSidebarCollapsed ? "px-0 md:px-4" : "px-4"
       )}
