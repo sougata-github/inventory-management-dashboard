@@ -59,14 +59,22 @@ const Sidebar = () => {
     dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
   };
 
+  // add this to globals.css:
+  // @layer utilities{
+  //   .hide-scrollbar{
+  //     display:none;
+  //   }
+  // }
+
   return (
     <aside
       className={cn(
-        "bg-background fixed md:sticky md:top-0 md:bottom-0 md:left-0 flex flex-col border-l border transition-all duration-300 h-screen shadow max-md:z-40 py-5 overflow-hidden",
+        "bg-background fixed h-screen md:h-screen md:sticky md:top-0 md:bottom-0 md:left-0 flex flex-col border-l border transition-all duration-300 shadow max-md:z-40 py-5 overflow-y-auto hide-scrollbar",
         isSidebarCollapsed ? "w-0 md:w-16" : "w-72 md:w-64",
         isSidebarCollapsed ? "px-0 md:px-4" : "px-4"
       )}
     >
+      {/* sidebar header */}
       <div className="flex items-center justify-between">
         <Link
           href="/"
@@ -94,8 +102,8 @@ const Sidebar = () => {
         </button>
       </div>
 
-      {/* links */}
-      <div className="flex-grow mt-16">
+      {/*sidebar links */}
+      <div className="mt-16">
         <ul className="flex flex-col gap-4">
           {sidebarLinks.map((link) => (
             <SidebarLinks
@@ -107,21 +115,23 @@ const Sidebar = () => {
         </ul>
       </div>
 
-      {/* footer */}
-      <Link
-        href="/settings"
-        className={cn(
-          "flex items-center p-2 rounded-md",
-          isSidebarCollapsed && "justify-center"
-        )}
-      >
-        <button className="flex items-center rounded-sm p-1 gap-4">
-          <Settings className="size-4" />
-          <span className={cn("text-sm", isSidebarCollapsed && "hidden")}>
-            Settings
-          </span>
-        </button>
-      </Link>
+      {/*sidebar footer */}
+      <footer className="mt-auto">
+        <Link
+          href="/settings"
+          className={cn(
+            "flex items-center p-2 rounded-md",
+            isSidebarCollapsed && "justify-center"
+          )}
+        >
+          <button className="flex items-center rounded-sm p-1 gap-4">
+            <Settings className="size-4" />
+            <span className={cn("text-sm", isSidebarCollapsed && "hidden")}>
+              Settings
+            </span>
+          </button>
+        </Link>
+      </footer>
     </aside>
   );
 };
