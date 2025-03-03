@@ -69,9 +69,8 @@ const Sidebar = () => {
   return (
     <aside
       className={cn(
-        "bg-background fixed h-screen md:h-screen md:sticky md:top-0 md:bottom-0 md:left-0 flex flex-col border-l border transition-all duration-300 shadow max-md:z-40 py-5 overflow-y-auto hide-scrollbar",
-        isSidebarCollapsed ? "w-0 md:w-16" : "w-72 md:w-64",
-        isSidebarCollapsed ? "px-0 md:px-4" : "px-4"
+        "bg-background fixed h-screen md:sticky md:top-0 md:bottom-0 md:left-0 flex flex-col border-l border transition-all duration-300 shadow max-md:z-40 py-5 overflow-y-auto hide-scrollbar",
+        isSidebarCollapsed ? "w-0 md:w-16 px-0 md:px-4" : "w-72 md:w-64 px-4"
       )}
     >
       {/* sidebar header */}
